@@ -1,0 +1,56 @@
+﻿﻿@model IEnumerable<Labb4-MVCRazor-WebbapplicationsWithC-ASP.NET.Models.BookViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Böcker</h1>
+
+<p>
+    <a asp-action="Create">Add new book</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BookTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SerialNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Publisher)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.BookTitle, "Details", new { id = item.BookId })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SerialNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Publisher)
+            </td>
+            <td>
+                @if ((bool)item.IsAvailable)
+                {
+                    <a href="@Url.Action("Edit", "BookLoanHistory", new { bookId = item.BookId, returnDate = item.ReturnDate, bbh = item.bbh})" class="btn btn-success">Return</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Create", "BookLoanHistory", new { bookId = item.BookId })" class="btn btn-primary">Check out</a>
+                }
+            </td>
+        </tr>
+    }
+</table>

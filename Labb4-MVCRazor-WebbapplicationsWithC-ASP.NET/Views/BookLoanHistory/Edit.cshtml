@@ -1,0 +1,66 @@
+﻿@model Labb4_MVCRazor_WebbapplicationsWithC_ASP.NET.Models.BookLoanHistory
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+<form asp-action="Edit" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Book</h4>
+        <hr />
+        <partial name="_ValidationSummary" />
+
+        <input type="hidden" asp-for="BookId" />
+
+        <div class="form-group">
+            <label asp-for="BookId" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <input asp-for="BookId" class="form-control" />
+                <span asp-validation-for="BookId" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="SerialNumber" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <input asp-for="SerialNumber" class="form-control" />
+                <span asp-validation-for="SerialNumber" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="FullName" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Publisher" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <input asp-for="Publisher" class="form-control" />
+                <span asp-validation-for="Publisher" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <input type="submit" value="Submit" class="btn btn-primary" />
+        <a asp-action="Index">Back to list</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

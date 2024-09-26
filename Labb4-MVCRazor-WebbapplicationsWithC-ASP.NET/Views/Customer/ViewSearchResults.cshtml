@@ -1,0 +1,47 @@
+﻿﻿@model IEnumerable<Labb4-MVCRazor-WebbapplicationsWithC-ASP.NET.Models.BookLoanHistory>
+
+
+@{
+    ViewData["Title"] = "ViewSearchResults";
+}
+
+<h1>Search results</h1>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Books.BookTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Books.SerialNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customers.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Books.BookTitle, "Details", new { id = item.BookId })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Books.SerialNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customers.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </td> 
+        </tr>
+    }
+    <div>
+        <a asp-action="Index">Back to list</a>
+    </div>
+</table>
